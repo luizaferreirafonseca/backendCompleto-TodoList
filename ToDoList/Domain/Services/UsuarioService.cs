@@ -45,7 +45,7 @@ namespace ToDoList.Domain.Services
 
         }
 
-        public bool DeletarUsuario(int id)
+        public bool Deletar(int id)
         {
             var usuario = _appDbContext.Usuarios.Find(id);
             if (usuario == null)
