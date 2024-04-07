@@ -2,7 +2,7 @@
 
 namespace ToDoList.Domain.DTO
 {
-    public class CreateUserDTO
+    public class CriarUsuarioDTO
     {
 
         [Required(ErrorMessage = "Nome não informado.")]
