@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using ToDoList.Data.Context;
 using ToDoList.Domain.DTO;
+using ToDoList.Domain.Models;
 
 namespace ToDoList.Domain.Services
 {
@@ -19,16 +20,11 @@ namespace ToDoList.Domain.Services
 
         }
 
-        public bool Login(UsuarioLoginDTO dto)
+        public Usuario Login(UsuarioLoginDTO dto)
         {
-            var usuario = _appDbContext.Usuarios.FirstOrDefault(u => u.Email == dto.Email && u.Senha == dto.Senha); 
+            var usuario = _appDbContext.Usuarios.FirstOrDefault(u => u.Email == dto.Email && u.Senha == dto.Senha);
 
-            if (usuario == null)
-            {
-                return false;
-            }
-
-            return true;
+            return usuario;
         }
     }
 }

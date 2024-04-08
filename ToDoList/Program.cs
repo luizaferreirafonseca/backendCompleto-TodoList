@@ -1,6 +1,7 @@
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 using ToDoList.Data.Context;
+using ToDoList.Domain.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -46,10 +47,12 @@ builder.Services.AddSwaggerGen();
 
 // Services
 
-
+builder.Services.AddScoped<UsuarioService>();
+builder.Services.AddScoped<LoginService>();
 
 //AutoMapper
 
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 // Context
 

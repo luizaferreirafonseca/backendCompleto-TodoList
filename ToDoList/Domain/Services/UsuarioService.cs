@@ -50,7 +50,7 @@ namespace ToDoList.Domain.Services
             var usuario = _appDbContext.Usuarios.Find(id);
             if (usuario == null)
             {
-                throw new KeyNotFoundException("Usuário não encontrado");
+                return false;
             }
 
             usuario.Ativo = false; 
