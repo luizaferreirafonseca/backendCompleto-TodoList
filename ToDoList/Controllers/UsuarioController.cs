@@ -84,7 +84,8 @@ namespace ToDoList.Controllers
             return Ok("Usuário deletado com sucesso");
         }
 
-        [HttpGet()]
+        [HttpGet("PegarUsuarioPorEmail")]
+
 
         public ActionResult PegarPeloEmail(string email)
         {

@@ -16,6 +16,6 @@ namespace ToDoList.Domain.DTO
         [Required]
         public string Descricao { get; set; }
 
-        public int? UsuarioId { get; set; }
+        
     }
 }
