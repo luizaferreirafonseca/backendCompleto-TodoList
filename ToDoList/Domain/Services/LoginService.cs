@@ -22,9 +22,10 @@ namespace ToDoList.Domain.Services
 
         public Usuario Login(UsuarioLoginDTO dto)
         {
-            var usuario = _appDbContext.Usuarios.FirstOrDefault(u => u.Email == dto.Email && u.Senha == dto.Senha);
+            var usuario = _appDbContext.Usuarios.Include(u => u.Tarefas).FirstOrDefault(u => u.Email == dto.Email && u.Senha == dto.Senha);
 
             return usuario;
         }
+
     }
 }

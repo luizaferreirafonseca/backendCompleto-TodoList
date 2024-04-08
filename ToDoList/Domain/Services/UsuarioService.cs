@@ -63,7 +63,7 @@ namespace ToDoList.Domain.Services
 
         public Usuario PegarPorEmail(string email)
         {
-            var usuario = _appDbContext.Usuarios.FirstOrDefault(u => u.Email == email);
+            var usuario = _appDbContext.Usuarios.Include(u=> u.Tarefas).FirstOrDefault(u => u.Email == email);
 
             if (usuario == null)
             {
@@ -75,7 +75,7 @@ namespace ToDoList.Domain.Services
 
         public Usuario PegarPeloId(int id)
         {
-            var usuario = _appDbContext.Usuarios.FirstOrDefault(u => u.Id == id);
+            var usuario = _appDbContext.Usuarios.Include(u => u.Tarefas).FirstOrDefault(u => u.Id == id);
 
             if (usuario == null)
             {
