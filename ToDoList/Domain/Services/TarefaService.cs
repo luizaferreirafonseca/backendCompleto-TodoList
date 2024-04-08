@@ -18,6 +18,9 @@ namespace ToDoList.Domain.Services
             _mapper = mapper;
         }
 
+
+
+
         public List<Tarefa> Cadastrar(TarefaDTO tarefaDto)
         {
             if(tarefaDto == null)
@@ -27,7 +30,7 @@ namespace ToDoList.Domain.Services
 
             Tarefa novaTarefa = _mapper.Map<Tarefa>(tarefaDto);
 
-            var tarefaCriada = _appDbContext.Tarefas.Add(novaTarefa);
+            _appDbContext.Tarefas.Add(novaTarefa);
             _appDbContext.SaveChanges();
 
             var tarefasAtualizadas = _appDbContext.Tarefas.ToList();
@@ -35,22 +38,22 @@ namespace ToDoList.Domain.Services
             return tarefasAtualizadas;
 
         }
-        
-        public List<Tarefa> Deletar(int id)
+
+        public bool Deletar(int id)
         {
             var tarefa = _appDbContext.Tarefas.Find(id);
 
             if (tarefa == null)
             {
-                throw new Exception($"A tarefa com ID {id} não foi encontrada.");
+                return false;
             }
 
             _appDbContext.Remove(tarefa);
             _appDbContext.SaveChanges();
 
-            var tarefasAtualizadas = _appDbContext.Tarefas.ToList();
-            return tarefasAtualizadas;
+            return true;
         }
+
 
         public Tarefa PegarPeloId(int id)
         {
@@ -58,7 +61,7 @@ namespace ToDoList.Domain.Services
 
             if (tarefa == null)
             {
-                throw new Exception($"O {id} não existe");
+                throw new KeyNotFoundException($"A tarefa com o ID {id} não foi encontrada");
             }
             return tarefa;
 
