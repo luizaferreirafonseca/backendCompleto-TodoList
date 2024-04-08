@@ -49,6 +49,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<UsuarioService>();
 builder.Services.AddScoped<LoginService>();
+builder.Services.AddScoped<TarefaService>();
 
 //AutoMapper
 
